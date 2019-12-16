@@ -1,5 +1,4 @@
 import Navigo from 'navigo';
-import Drawer from './drawer.js';
 import Canvas from './canvas';
 
 var root = null;
@@ -12,8 +11,8 @@ router
     console.log('show input')
   })
   .on('/', function () {
+    const canvas = new Canvas()
+    canvas.drawText();
     console.log('show canvas')
-    const drawer = new Drawer();
-    drawer.drawText();
   })
   .resolve();
