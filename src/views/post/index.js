@@ -1,7 +1,7 @@
 import './index.css'
 import $ from 'jquery';
-import { trimOutsideEmptyCharacters } from '../util/text';
-import databaseService from '../services/db';
+import { trimOutsideEmptyCharacters } from '../../util/text';
+import databaseService from '../../services/db';
 
 function PostPage() {
   this.template = require('./index.html');

@@ -1,6 +1,6 @@
 import Navigo from 'navigo';
-import PostPage from './post';
-import Canvas from './canvas';
+import PostPage from './views/post';
+import Canvas from './views/canvas';
 
 var root = null;
 var useHash = false;

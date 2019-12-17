@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import Drawer from '../drawer';
+import Drawer from '../../drawer';
 
 function Canvas() {
   this.template = require('./index.html');
