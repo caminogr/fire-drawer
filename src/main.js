@@ -12,6 +12,6 @@ router
   })
   .on('/', function () {
     const canvas = new Canvas()
-    canvas.index();
+    canvas.draw();
   })
   .resolve();

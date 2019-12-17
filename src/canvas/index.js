@@ -2,14 +2,12 @@ import $ from 'jquery';
 import Drawer from '../drawer';
 
 function Canvas() {
-  this.templateIndex = require('./index.html');
+  this.template = require('./index.html');
+  $("#app-container").html(this.template)
 }
 
 Canvas.prototype = {
-  index: function () {
-    const self = this;
-    $("#app-container").html(self.templateIndex)
-
+  draw: function () {
     this.drawer = new Drawer();
     this.drawer.drawText()
   },
