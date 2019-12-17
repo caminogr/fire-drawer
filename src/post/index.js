@@ -1,5 +1,6 @@
 import './index.css'
 import $ from 'jquery';
+import { trimOutsideEmptyCharacters } from '../util/text';
 
 function PostPage() {
   this.template = require('./index.html');
@@ -8,8 +9,12 @@ function PostPage() {
 PostPage.prototype = {
   render: function() {
     $('#app-container').html(this.template)
-    $('#text-input').on('keydown', () => {
-      console.log('input')
+    $('#text-input').on('keydown', (e) => {
+        // temporarily code
+        if (e.keyCode !== 13) return
+        const ajustedText = trimOutsideEmptyCharacters(e.target.value)
+        if (ajustedText === '') return
+        e.target.value = '';
     })
   }
 }
