@@ -1,4 +1,5 @@
 import Navigo from 'navigo';
+import PostPage from './post';
 import Canvas from './canvas';
 
 var root = null;
@@ -8,7 +9,7 @@ var router = new Navigo(root, useHash, hash);
 
 router
   .on('/input', function () {
-    console.log('show input')
+    const postPage = new PostPage();
   })
   .on('/', function () {
     const canvas = new Canvas()
