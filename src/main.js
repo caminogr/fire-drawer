@@ -10,6 +10,7 @@ var router = new Navigo(root, useHash, hash);
 router
   .on('/input', function () {
     const postPage = new PostPage();
+    postPage.render();
   })
   .on('/', function () {
     const canvas = new Canvas()
