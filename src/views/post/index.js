@@ -19,7 +19,7 @@ PostPage.prototype = {
         if (ajustedText === '') return
 
         databaseService.post(ajustedText);
-        this.inputText = '';
+        $('#text-input').val('');
     })
   }
 }
