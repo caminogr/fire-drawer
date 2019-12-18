@@ -2,10 +2,10 @@ import Navigo from 'navigo';
 import PostPage from './views/post';
 import Canvas from './views/canvas';
 
-var root = null;
-var useHash = false;
-var hash = '#';
-var router = new Navigo(root, useHash, hash);
+const root = null;
+const useHash = false;
+const hash = '#';
+const router = new Navigo(root, useHash, hash);
 
 router
   .on('/input', function () {
