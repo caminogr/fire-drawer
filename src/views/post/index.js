@@ -1,6 +1,5 @@
 import './index.css'
 import $ from 'jquery';
-import { trimOutsideEmptyCharacters } from '../../util/text';
 import databaseService from '../../services/db';
 
 function PostPage() {
@@ -13,7 +12,7 @@ PostPage.prototype = {
     $('#text-input').on('keydown', (e) => {
         // temporarily code
         if (e.keyCode !== 13) return
-        const ajustedText = trimOutsideEmptyCharacters(e.target.value)
+        const ajustedText = e.target.value.trim();
         if (ajustedText === '') return
 
         databaseService.post(ajustedText);
