@@ -4,17 +4,23 @@ import eventEmitter from '../eventEmitter';
 function DatabaseService() {
   this.database = firebase.database();
   this.postRef = firebase.database().ref('post/')
+  this._initialDataLoaded = false;
   this._localPost = false;
 }
 
 DatabaseService.prototype = {
   init: function() {
+    const self = this;
     this.listen();
+    this.postRef.once('value', function() {
+      self._initialDataLoaded = true;
+    });
   },
 
   listen: function() {
     const self = this;
     this.postRef.on('child_added', function(snapshot) {
+      if (!self._initialDataLoaded) return;
       if (self._localPost) {
         self._localPost = false
         return;
