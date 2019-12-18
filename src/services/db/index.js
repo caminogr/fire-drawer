@@ -1,4 +1,5 @@
 import firebase from '../../config/firebase';
+import eventEmitter from '../eventEmitter';
 
 function DatabaseService() {
   this.database = firebase.database();
@@ -18,7 +19,7 @@ DatabaseService.prototype = {
         self._localPost = false
         return;
       }
-      console.log('snapshot', snapshot)
+      eventEmitter.emit('post', snapshot);
     })
   },
 

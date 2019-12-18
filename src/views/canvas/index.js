@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Drawer from '../../drawer';
+import eventEmitter from '../../services/eventEmitter';
 
 function Canvas() {
   this.template = require('./index.html');
@@ -7,10 +8,11 @@ function Canvas() {
 }
 
 Canvas.prototype = {
-  draw: function () {
-    this.drawer = new Drawer();
-    this.drawer.drawText()
-  },
+  init: function() {
+    eventEmitter.on('post', function(snapshot) {
+      console.log('canvas on', snapshot)
+    })
+  }
 }
 
 export default Canvas;
