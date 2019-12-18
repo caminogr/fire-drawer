@@ -9,16 +9,17 @@ function Drawer() {
 Drawer.prototype = {
   drawText: function (text) {
     const self = this;
+    let posX = this.canvas.width;
+    const posY = Math.random() * this.canvas.height;
     const intervalId = setInterval(function () {
-      let posX = this.canvas.width;
       self.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      self.ctx.fillText(text, posX, this.canvas.height / 2)
+      self.ctx.fillText(text, posX, posY)
       posX -= 10
-      // todo: calculate text width
-      if (posX < -1000) {
-        this.clearInterval(intervalId)
-      }
     }, 20 )
+    // todo: calculate text width
+    if (posX < -1000) {
+      this.clearInterval(intervalId)
+    }
   }
 }
 
