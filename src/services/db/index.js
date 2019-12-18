@@ -29,9 +29,11 @@ DatabaseService.prototype = {
     })
   },
 
-  post: function(message) {
+  post: function(message, direction, speed) {
     this.database.ref('post/').push({
       message,
+      direction,
+      speed,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
     });
     this._localPost = true;

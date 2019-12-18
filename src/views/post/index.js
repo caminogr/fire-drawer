@@ -18,7 +18,7 @@ PostPage.prototype = {
         const ajustedText = this.inputText.trim();
         if (ajustedText === '') return
 
-        databaseService.post(ajustedText);
+        databaseService.post(ajustedText, 'x', e.acceleration.x);
         $('#text-input').val('');
     })
   }
