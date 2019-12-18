@@ -5,6 +5,8 @@ import eventEmitter from '../../services/eventEmitter';
 function Canvas() {
   this.template = require('./index.html');
   $("#app-container").html(this.template)
+
+  this.drawer = new Drawer();
 }
 
 Canvas.prototype = {
@@ -16,7 +18,7 @@ Canvas.prototype = {
   },
 
   showText: function(postData) {
-    console.log('canvas on', postData)
+    this.drawer.drawText(postData.message)
   }
 }
 
