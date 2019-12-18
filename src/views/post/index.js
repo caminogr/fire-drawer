@@ -10,7 +10,7 @@ function PostPage() {
 PostPage.prototype = {
   render: function() {
     $('#app-container').html(this.template)
-    $('#text-input').on('keydown', (e) => {
+    $('#text-input').on('keyup', (e) => {
       this.inputText = e.currentTarget.value;
     })
     window.addEventListener('devicemotion', (e) => {
