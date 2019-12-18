@@ -14,12 +14,12 @@ DatabaseService.prototype = {
 
   listen: function() {
     const self = this;
-    this.postRef.on('value', function(snapshot) {
+    this.postRef.on('child_added', function(snapshot) {
       if (self._localPost) {
         self._localPost = false
         return;
       }
-      eventEmitter.emit('post', snapshot);
+      eventEmitter.emit('post', snapshot.val());
     })
   },
 

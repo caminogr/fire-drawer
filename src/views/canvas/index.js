@@ -9,9 +9,14 @@ function Canvas() {
 
 Canvas.prototype = {
   init: function() {
-    eventEmitter.on('post', function(snapshot) {
-      console.log('canvas on', snapshot)
+    const self = this;
+    eventEmitter.on('post', function(data) {
+      self.showText(data)
     })
+  },
+
+  showText: function(postData) {
+    console.log('canvas on', postData)
   }
 }
 
