@@ -4,19 +4,22 @@ import databaseService from '../../services/db';
 
 function PostPage() {
   this.template = require('./index.html');
+  this.inputText = '';
 }
 
 PostPage.prototype = {
   render: function() {
     $('#app-container').html(this.template)
     $('#text-input').on('keydown', (e) => {
-        // temporarily code
-        if (e.keyCode !== 13) return
-        const ajustedText = e.target.value.trim();
+      this.inputText = e.currentTarget.value;
+    })
+    window.addEventListener('devicemotion', (e) => {
+      if (e.acceleration.x < 5) return
+        const ajustedText = this.inputText.trim();
         if (ajustedText === '') return
 
         databaseService.post(ajustedText);
-        e.target.value = '';
+        this.inputText = '';
     })
   }
 }
