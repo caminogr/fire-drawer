@@ -1,6 +1,7 @@
 import './index.css'
 import $ from 'jquery';
 import databaseService from '../../services/db';
+import throttle from 'lodash/throttle';
 
 function PostPage() {
   this.template = require('./index.html');
@@ -18,8 +19,12 @@ PostPage.prototype = {
         const ajustedText = this.inputText.trim();
         if (ajustedText === '') return
 
+      throttle(postData, 2000);
+
+      function postData() {
         databaseService.post(ajustedText, 'x', e.acceleration.x);
         $('#text-input').val('');
+      }
     })
   }
 }
