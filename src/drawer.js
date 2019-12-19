@@ -4,22 +4,29 @@ function Drawer() {
   this.ctx.font = "24px Arial";
   this.ctx.strokeStyle = "#323232";
   this.ctx.lineWidth = 2; 
+
+  this.posX = this.canvas.width;
+  this.posY = Math.random() * this.canvas.height;
+  this.counter = 0;
 }
 
 Drawer.prototype = {
-  drawText: function (text) {
+  drawText: function(text) {
     const self = this;
-    let posX = this.canvas.width;
-    const posY = Math.random() * this.canvas.height;
-    const intervalId = setInterval(function () {
-      self.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      self.ctx.fillText(text, posX, posY)
-      posX -= 10
-    }, 20 )
+    window.requestAnimationFrame(function() {
+      self._drawText(text)
+    })
+  },
+  _drawText: function (text) {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.counter += 10;
+    const offsetX = this.posX - this.counter;
+    this.ctx.fillText(text, offsetX, this.posY);
     // todo: calculate text width
-    if (posX < -1000) {
-      this.clearInterval(intervalId)
+    if (offsetX < -400) {
+      return;
     }
+    this.drawText(text);
   }
 }
 
