@@ -14,15 +14,15 @@ Drawer.prototype = {
   drawText: function(text, speed) {
     const self = this;
     window.requestAnimationFrame(function() {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.counter += 2 * speed;
-      const offsetX = this.posX - this.counter;
-      this.ctx.fillText(text, offsetX, this.posY);
+      self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height);
+      self.counter += 2 * speed;
+      const offsetX = self.posX - self.counter;
+      self.ctx.fillText(text, offsetX, self.posY);
       // todo: calculate text width
       if (offsetX < -400) {
         return;
       }
-      this.drawText(text, speed);
+      self.drawText(text, speed);
     })
   },
 }
