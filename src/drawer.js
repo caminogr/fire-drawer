@@ -11,22 +11,23 @@ function Drawer() {
 }
 
 Drawer.prototype = {
-  drawText: function(text) {
+  drawText: function(text, speed) {
     const self = this;
     window.requestAnimationFrame(function() {
-      self._drawText(text)
+      self._drawText(text, speed)
     })
   },
-  _drawText: function (text) {
+  _drawText: function (text, speed) {
+    console.log(speed)
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.counter += 10;
+    this.counter += 2 * speed;
     const offsetX = this.posX - this.counter;
     this.ctx.fillText(text, offsetX, this.posY);
     // todo: calculate text width
     if (offsetX < -400) {
       return;
     }
-    this.drawText(text);
+    this.drawText(text, speed);
   }
 }
 

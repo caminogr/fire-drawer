@@ -17,7 +17,7 @@ Canvas.prototype = {
 
   showText: function(postData) {
     const drawer = new Drawer();
-    drawer.drawText(postData.message)
+    drawer.drawText(postData.message, postData.speed)
   }
 }
 
