@@ -15,7 +15,7 @@ Drawer.prototype = {
     const self = this;
     window.requestAnimationFrame(function() {
       self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height);
-      self.counter += 2 * speed;
+      self.counter += 1.5 * speed;
       const offsetX = self.posX - self.counter;
       self.ctx.fillText(text, offsetX, self.posY);
       // todo: calculate text width
